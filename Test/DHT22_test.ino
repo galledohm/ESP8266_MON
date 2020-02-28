@@ -2,7 +2,7 @@
 #include <DHT.h>
 
 //Constants
-const uint8_t DHT_data_pin = 4;               // Arduino pin were BHT22 data pin is connected
+const uint8_t DHT_data_pin = 4;               // Arduino pin were DHT22 data pin is connected
 const uint8_t DP_David_Bolton_1980 = 0;
 const uint8_t DP_Sonntag_1990 = 1;
 const uint8_t DP_Paroscientific_1974 = 2;

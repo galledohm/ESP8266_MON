@@ -20,8 +20,8 @@ const char *HE_BBT_RES = "Heat_Index";
 const char *DP_BBT_RES = "Dew_Point";
 PubSubClient pubclient(espclient);
 
-/* BHT22 Parameters */
-const uint8_t DHT_DATA_PIN = 2;               // GPIO Port were BHT22 data pin is connected (on ESP8266-S01 only GPIO 0 and GPIO-2 are available.)
+/* DHT22 Parameters */
+const uint8_t DHT_DATA_PIN = 2;               // GPIO Port were DHT22 data pin is connected (on ESP8266-S01 only GPIO 0 and GPIO-2 are available.)
 const uint8_t DP_DAVID_BOLTON_1980 = 0;       // Dew Point Calculation Constants - Mode Selection (see function "calcDewpoint" for more details)
 const uint8_t DP_SONNTAG_1990 = 1;
 const uint8_t DP_PAROSCIENTIFIC_1974 = 2;
