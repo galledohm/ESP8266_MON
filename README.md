@@ -120,9 +120,9 @@ Once both devices have been tested and everything works properly, the final proj
 
 ### Beebotte Account Creation
 
-	- Create a beebotte account at this [link](https://beebotte.com). 
-	- Create a Beebotte Channel and record its name and token (they are required by mqtt protocol in order to send the data to this database).
-	- Inside the generated Channel, create the following resources:
+	* Create a beebotte account at this [link](https://beebotte.com). 
+	* Create a Beebotte Channel and record its name and token (they are required by mqtt protocol in order to send the data to this database).
+	* Inside the generated Channel, create the following resources:
 
 		| Resource     | Type          |
 		| ------------ | ------------- |
@@ -131,7 +131,7 @@ Once both devices have been tested and everything works properly, the final proj
 		| Heat_Index   | Number        |
 		| Dew_Point    | Number        |
 
-	- Create a Beebotte Dashboard with the prefered layout.
+	* Create a Beebotte Dashboard with the prefered layout.
 
 ### User configuration and program loading
 
@@ -146,8 +146,9 @@ Before loading the file [ESP8266_MON.ino](Source/ESP8266_MON.ino) into the ESP82
 	- interval: Time between data acquisition procedure; by default, half an hour.
 
 **Advanced Configuration:**
-	- DHT_DATA_PIN: ESP8266 input pin for gathering the DHT22 data. By default the programm will use the pin "2" (GPIO2), but you can also select pin "0" (GPIO0), the only issue with this pin is that it is also used for the configuration of the operation mode of the ESP8266-01S module.
-	- Third argument in "calcDewpoint()" function: Allows the selection of the Dew Point constants (check calcDewpoint() function in order to learn the different possibilities).
+
+	* DHT_DATA_PIN: ESP8266 input pin for gathering the DHT22 data. By default the programm will use the pin "2" (GPIO2), but you can also select pin "0" (GPIO0), the only issue with this pin is that it is also used for the configuration of the operation mode of the ESP8266-01S module.
+	* Third argument in "calcDewpoint()" function: Allows the selection of the Dew Point constants (check calcDewpoint() function in order to learn the different possibilities).
 
 Finally, once everything is correctly configured, load the the file [ESP8266_MON.ino](Source/ESP8266_MON.ino) into the ESP8268-01S module following the steps 1 and 2 of this [link](https://create.arduino.cc/projecthub/ROBINTHOMAS/programming-esp8266-esp-01-with-arduino-011389).
 
