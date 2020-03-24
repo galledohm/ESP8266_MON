@@ -49,7 +49,7 @@ The following libraries are required in order to correctly execute and build thi
 
 ### DHT22 Test
 
-In order to test the temperature and humidity sensor. Load the file [DHT22_test.ino](Test/DHT22_test.ino) into your arduino and connect it as follows:
+In order to test the temperature and humidity sensor, load the file [DHT22_test.ino](Test/DHT22_test.ino) into your arduino and connect it as follows:
 
 | Arduino       | DHT22    | 
 | ------------- |--------- |
@@ -61,13 +61,100 @@ Every 7s you should see the acquired data through the Serial Bus in your compute
 
 ### ESP8266 Test
 
+In order to test the WiFi module, load the file [ESP8266_Test.ino](Test/ESP8266_Test.ino) into the ESP8268-01S module. To do so, follow steps 1 and 2 of this [link](https://create.arduino.cc/projecthub/ROBINTHOMAS/programming-esp8266-esp-01-with-arduino-011389). Connect the pins as follows:
+
+| Arduino       | ESP8266-01S    | 
+| ------------- |--------------- |
+| 3.3v          | Vcc            |
+| GND           | GND            |
+| Tx            | Tx             |
+| Rx            | Rx             |
+| -             | GPIO 0         |
+| -             | GPIO 2         |
+| 3.3v          | CE             |
+| 3.3v          | RESET          |
+
+GPIO ports are not used in this testing program. Chip Enable (CE) and RESET ESP pins need to be connected to 3.3v in order to let the ESP work normally. 
+Once you have uploaded the code to the ESP8266 module you will be able to control its led from a webpage with two buttons (ON/OFF).
+
+**NOTE:** Never connect ESP8266-01S Vcc to more than 3.6v.
+
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Once both devices have been tested and everything works properly, the final project can be implemented; at this point, a breadboard is required. Connect the pins as follows:
+
+### Pin Connections
+
+#### Arduino to BreadBoard
+
+| Arduino       | BreadBoard    |
+| ------------- | ------------- |
+| 3.3v          | 3.3v          |
+| GND           | GND           |
+| Tx            | Tx            |
+| Rx            | Rx            |
+
+
+#### DHT22 to BreadBoard
+
+| DHT22      | BreadBoard    |
+| ---------- | ------------- |
+| Vcc        | 3.3v          |
+| GND        | GND           |
+| Data       | GPIO2         |
+
+**NOTE:** For the Data pin you can select any of the breadboard columns as far as you connect the ESP8266-01S GPIO2 pin to it.
+
+#### ESP8266-01S to BreadBoard
+
+|  ESP8266-01S   | BreadBoard    |
+|  ------------- | ------------- |
+|  Vcc           | 3.3v          |
+|  GND           | GND           |
+|  Tx            | Tx            |
+|  Rx            | Rx            |
+|  GPIO 0        | GPIO 0        |
+|  GPIO 2        | GPIO 2        |
+|  CE            | 3.3v          |
+|  RESET         | 3.3v          |
+
+### Beebotte Account Creation
+
+	- Create a beebotte account at this [link](https://beebotte.com). 
+	- Create a Beebotte Channel and record its name and token (they are required by mqtt protocol in order to send the data to this database).
+	- Inside the generated Channel, create the following resources:
+
+		| Resource     | Type          |
+		| ------------ | ------------- |
+		| Temperature  | Temp          |
+		| Humidity     | Humidity      |
+		| Heat_Index   | Number        |
+		| Dew_Point    | Number        |
+
+	- Create a Beebotte Dashboard with the prefered layout.
+
+### User configuration and program loading
+
+Before loading the file [ESP8266_MON.ino](Source/ESP8266_MON.ino) into the ESP8268-01S module, a couple of parameters must be edited and configured in order to make it work in your specific enviroment. Bellow a list with the editable parameters is shown:
+
+**Basic Configuration:**
+
+	- WIFI_SSID: Name of your WiFi network.
+	- WIFI_PASS: Password of the above-mentioned WiFi network.
+	- TOKEN: Beebotte Channel token.
+	- BBT_CHANNEL: Beebotte Channel name.
+	- interval: Time between data acquisition procedure; by default, half an hour.
+
+**Advanced Configuration:**
+	- DHT_DATA_PIN: ESP8266 input pin for gathering the DHT22 data. By default the programm will use the pin "2" (GPIO2), but you can also select pin "0" (GPIO0), the only issue with this pin is that it is also used for the configuration of the operation mode of the ESP8266-01S module.
+	- Third argument in "calcDewpoint()" function: Allows the selection of the Dew Point constants (check calcDewpoint() function in order to learn the different possibilities).
+
+Finally, once everything is correctly configured, load the the file [ESP8266_MON.ino](Source/ESP8266_MON.ino) into the ESP8268-01S module following the steps 1 and 2 of this [link](https://create.arduino.cc/projecthub/ROBINTHOMAS/programming-esp8266-esp-01-with-arduino-011389).
 
 ## Built With
 
-* [Arduino-IDE](https://www.arduino.cc/en/Main/Software) - Arduino framework 
+* [Arduino-IDE](https://www.arduino.cc/en/Main/Software) - Arduino framework
+* [Beebotte](https://beebotte.com) - Beebotte DataBase
 
 ## License
 
@@ -75,9 +162,9 @@ This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENS
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Lazyness is the quickest path to inspire automation :)
+* And two hard boiled eggs.
+* Tosta&Tisco©
 
 
 

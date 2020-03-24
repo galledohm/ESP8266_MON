@@ -3,16 +3,19 @@
 #include <ESP8266WebServer.h> 
  
 /* Set these to your desired credentials. */ 
-const char *ssid = "MiFibra-038E"; //Enter your WIFI ssid 
-const char *password = "DibDabDub_2019-DAA"; //Enter your WIFI password 
+const char *ssid = "****"; //Enter your WIFI ssid 
+const char *password = "******"; //Enter your WIFI password 
  
-ESP8266WebServer server(80); 
+ESP8266WebServer server(80);  // Web server port for incoming requests
  
- 
-void handleRoot() { 
+/* Root HTML */ 
+void handleRoot()
+{ 
   server.send(200, "text/html", "<form action=\"/LED_BUILTIN_on\" method=\"get\" id=\"form1\"></form><button type=\"submit\" form=\"form1\" value=\"On\">On</button><form action=\"/LED_BUILTIN_off\" method=\"get\" id=\"form2\"></form><button type=\"submit\" form=\"form2\" value=\"Off\">Off</button>"); 
 } 
-void handleSave() { 
+
+void handleSave()
+{ 
   if (server.arg("pass") != "") { 
     Serial.println(server.arg("pass")); 
   } 
