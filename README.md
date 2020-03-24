@@ -124,12 +124,12 @@ Once both devices have been tested and everything works properly, the final proj
 - Create a Beebotte Channel and record its name and token (they are required by mqtt protocol in order to send the data to this database).
 - Inside the generated Channel, create the following resources:
 
-| Resource     | Type          |
-| ------------ | ------------- |
-| Temperature  | Temp          |
-| Humidity     | Humidity      |
-| Heat_Index   | Number        |
-| Dew_Point    | Number        |
+	| Resource     | Type          |
+	| ------------ | ------------- |
+	| Temperature  | Temp          |
+	| Humidity     | Humidity      |
+	| Heat_Index   | Number        |
+	| Dew_Point    | Number        |
 
 - Create a Beebotte Dashboard with the prefered layout.
 
